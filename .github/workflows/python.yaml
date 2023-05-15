@@ -1,0 +1,26 @@
+---
+name: Python
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+      - uses: psf/black@stable
+        with:
+          options: "--check --verbose"
+          src: "./"
+      - uses: github/codeql-action/init@v2
+        with:
+          languages: python
+      - uses: github/codeql-action/analyze@v2
+      - run: pip install -r requirements.txt
