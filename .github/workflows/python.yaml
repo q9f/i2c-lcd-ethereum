@@ -28,6 +28,7 @@ jobs:
       security-events: write
     strategy:
       fail-fast: false
+    steps:
       - uses: github/codeql-action/init@v2
         with:
           languages: python
