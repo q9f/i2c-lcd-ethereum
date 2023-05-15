@@ -35,7 +35,7 @@ while True:
         # Let's try to handle as many exceptions as possible
         try:
             # Print the client version on line 1, limit to 20 chars
-            line_one = geth.version[0:20]
+            line_one = geth.version[0:20].lower()
             line_one = line_one.rjust(20, " ")
 
             # Get a syncing indicator
