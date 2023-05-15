@@ -80,6 +80,7 @@ while True:
             lcd.display_string(line_two, 2)
             lcd.display_string(line_three, 3)
             lcd.display_string(line_four, 4)
+            print(" ".join([line_one, line_two, line_three, line_four]))
             sleep(0.5)
 
     # Print client status if geth node is disconnected
