@@ -9,7 +9,7 @@ iic bus scripts for monitoring ethereum nodes using serial lcd displays (here: `
 * requires `smbus2` and `web3`
 
 ```bash
-pip3 install smbus2 web3
+pip3 install -r requirements.txt
 ```
 
 i2c lcd drivers are provided in `./i2c`
