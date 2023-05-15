@@ -1,6 +1,7 @@
 # pip3 install smbus2
 import smbus2 as smbus
 
+
 class device:
     def __init__(self, addr, port):
         self.addr = addr
