@@ -19,6 +19,7 @@ def format_hash(hash):
     formatted = hash[2:10] + ".." + hash[58:66]
     return str(formatted)
 
+
 def format_number(number):
     formatted = f"{number:_}"
     return str(formatted)

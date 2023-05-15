@@ -57,7 +57,7 @@ while True:
             line_three = line_three.rjust(20, " ")
 
             # Format line 4 with latest block time
-            block_time_fmt = lodestar.latest_block_time().strftime('%Y-%m-%d %H:%M:%S')
+            block_time_fmt = lodestar.latest_block_time().strftime("%Y-%m-%d %H:%M:%S")
             line_four = "t:" + block_time_fmt[1:19]
             line_four = line_four.rjust(20, " ")
 
