@@ -27,7 +27,7 @@ class Consensus:
         """Initialize a beacon node with an REST API exposed at URI"""
         self.uri = uri
         self.client = Beacon(uri)
-        self.version = self.client.get_version()
+        self.version = self.client.get_version()["data"]["version"]
         self.genesis = self.client.get_genesis()
 
     def is_connected(self):
