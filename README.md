@@ -65,6 +65,8 @@ lcd = lcd.display(address, bus)
 
 see [demo.py](./demo.py) to get started.
 
+see [geth.py](./geth.py) or [lodestar.py](./lodestar.py) to have a fully functioning script for a 20x4 lcd.
+
 ## credits
 
 license: `gplv3`
