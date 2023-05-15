@@ -14,10 +14,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-# pip3 install web3
 from datetime import datetime
 from time import time
+import eth.util as util
+
+# pip3 install web3
 from web3.beacon import Beacon
+
 
 class Consensus:
     def __init__(self, uri):
@@ -40,19 +43,19 @@ class Consensus:
         """Gets the peer count"""
         peers = self.client.get_peers()
         peer_count = int(peers["meta"]["count"])
-        return self.__format_number(peer_count)
+        return util.format_number(peer_count)
 
     def latest_block_hash(self):
         """Gets the latest received non-empty block hash"""
         block_header = self.client.get_block_headers()
         block_hash = str(block_header["data"][0]["header"]["message"]["body_root"])
-        return self.__format_hash(block_hash)
+        return util.format_hash(block_hash)
 
     def latest_block_number(self):
         """Gets the latest received non-empty block number"""
         block_header = self.client.get_block_headers()
         block_number = int(block_header["data"][0]["header"]["message"]["slot"])
-        return self.__format_number(block_number)
+        return util.format_number(block_number)
 
     def latest_block_time(self):
         """Gets the latest received non-empty block time"""
@@ -66,24 +69,16 @@ class Consensus:
         genesis_time = int(self.genesis["data"]["genesis_time"])
         slot_number = int((int(time()) - genesis_time) / 12)
         epoch_number = int(slot_number / 32)
-        return self.__format_number(epoch_number)
+        return util.format_number(epoch_number)
 
     def current_slot_number(self):
         """Gets the current slot number since genesis"""
         genesis_time = int(self.genesis["data"]["genesis_time"])
         slot_number = int((int(time()) - genesis_time) / 12)
-        return self.__format_number(slot_number)
+        return util.format_number(slot_number)
 
     def current_slot_time(self):
         """Gets the current slot time since genesis"""
         genesis_time = int(self.genesis["data"]["genesis_time"])
         slot_number = int((int(time()) - genesis_time) / 12)
         return datetime.fromtimestamp(int(genesis_time + slot_number * 12))
-
-    def __format_hash(self, hash):
-        formatted = hash[2:11] + ".." + hash[57:66]
-        return formatted
-
-    def __format_number(self, number):
-        formatted = f"{number:_}"
-        return formatted
