@@ -2,7 +2,7 @@ import i2c.lcd as lcd
 
 # use `i2cdetect` to determine device address and bus (see readme)
 address = 0x27
-bus = 2
+bus = 11
 lcd = lcd.display(address, bus)
 
 lcd.display_string("geth/1.11.6-stable-e", 1)

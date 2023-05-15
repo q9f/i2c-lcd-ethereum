@@ -40,7 +40,7 @@ i2c-11 i2c         Synopsys DesignWare I2C adapter   I2C adapter
 i2c-12 i2c         Synopsys DesignWare I2C adapter   I2C adapter
 ```
 
-get your display's _address_ (here `0x27`):
+get your display's _address_ from the bus (here `0x27`):
 
 ```bash
 i2cdetect -y -r 11
@@ -58,7 +58,7 @@ i2cdetect -y -r 11
 add these values to your script:
 
 ```python
-bus = 2
+bus = 11
 address = 0x27
 lcd = lcd.display(address, bus)
 ```
