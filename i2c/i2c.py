@@ -1,7 +1,7 @@
 # pip3 install smbus2
 import smbus2 as smbus
 
-class i2c_device:
+class device:
     def __init__(self, addr, port):
         self.addr = addr
         self.bus = smbus.SMBus(port)

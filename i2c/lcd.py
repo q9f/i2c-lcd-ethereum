@@ -1,10 +1,8 @@
-import i2c
+import i2c.i2c as i2c
 from time import sleep
 
-# default LCD address (use i2cdetect to determine device address)
+# default LCD address and port (use i2cdetect to determine device)
 ADDRESS = 0x27
-
-# default I2C port (use i2cdetect to determine device port)
 BUS = 2
 
 # commands
@@ -53,14 +51,14 @@ En = 0b00000100 # Enable bit
 Rw = 0b00000010 # Read/Write bit
 Rs = 0b00000001 # Register select bit
 
-class lcd:
+class display:
   """
-  Class to control the 16x2 I2C LCD display from sainsmart from the Raspberry Pi
+  Class to control an I2C LCD display
   """
 
   def __init__(self, address=ADDRESS, bus=BUS):
     """Setup the display, turn on backlight and text display + ...?"""
-    self.device = i2c.i2c_device(address, bus)
+    self.device = i2c.device(address, bus)
 
     self.write(0x03)
     self.write(0x03)
@@ -71,7 +69,6 @@ class lcd:
     self.write(LCD_DISPLAYCONTROL | LCD_DISPLAYON)
     self.write(LCD_CLEARDISPLAY)
     self.write(LCD_ENTRYMODESET | LCD_ENTRYLEFT)
-    self.write(LCD_ENTRYMODESET | LCD_ENTRYRIGHT | 0x00)
     sleep(0.2)
 
   def strobe(self, data):
@@ -91,6 +88,7 @@ class lcd:
     self.write_four_bits(mode | ((cmd << 4) & 0xF0))
 
   def display_string(self, string, line):
+    """write an entire string to line number"""
     if line == 1:
        self.write(0x80)
     if line == 2:
@@ -111,6 +109,10 @@ class lcd:
   def backlight_off(self):
     """turn off backlight, anything that calls write turns it on again"""
     self.device.write_cmd(LCD_NOBACKLIGHT)
+
+  def backlight_on(self):
+    """turn on backlight"""
+    self.device.write_cmd(LCD_BACKLIGHT)
 
   def display_off(self):
     """turn off the text display"""
