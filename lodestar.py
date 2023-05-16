@@ -53,24 +53,24 @@ while True:
         # Handle all other errors
         except:
             lcd.clear()
-            lcd.display_string("error: 200", 1)
-            lcd.display_string("python exception", 2)
+            lcd.write_line("error: 200", 1)
+            lcd.write_line("python exception", 2)
             print("error: 200 - python exception")
             sleep(10)
 
         # Print client status if no error occured
         else:
-            lcd.display_string(line_one, 1)
-            lcd.display_string(line_two, 2)
-            lcd.display_string(line_three, 3)
-            lcd.display_string(line_four, 4)
+            lcd.write_line(line_one, 1)
+            lcd.write_line(line_two, 2)
+            lcd.write_line(line_three, 3)
+            lcd.write_line(line_four, 4)
             print(" ".join([line_one, line_two, line_three, line_four]))
             sleep(0.5)
 
     # Print client status if lodestar node is disconnected
     else:
         lcd.clear()
-        lcd.display_string("error: 100", 1)
-        lcd.display_string("lodestar disconnect", 2)
+        lcd.write_line("error: 100", 1)
+        lcd.write_line("lodestar disconnect", 2)
         print("error: 100 - lodestar disconnected")
         sleep(10)

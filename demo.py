@@ -10,10 +10,10 @@ bus = 11
 lcd = lcd.display(address, bus)
 
 # display a fake status on the four lines
-lcd.display_string("geth/1.11.6-stable-e", 1)
-lcd.display_string("it works!  peers: 48", 2)
-lcd.display_string("  block: #17_264_799", 3)
-lcd.display_string("b854e8e65..836af1984", 4)
+lcd.write_line("geth/1.11.6-stable-e", 1)
+lcd.write_line("it works!  peers: 48", 2)
+lcd.write_line("  block: #17_264_799", 3)
+lcd.write_line("b854e8e65..836af1984", 4)
 
 # List of available beacon utilities
 lodestar = Consensus("http://localhost:9596")

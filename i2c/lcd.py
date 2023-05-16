@@ -106,7 +106,7 @@ class display:
         self.write_four_bits(mode | (cmd & 0xF0))
         self.write_four_bits(mode | ((cmd << 4) & 0xF0))
 
-    def display_string(self, string, line):
+    def write_line(self, string, line):
         """write an entire string to line number"""
         if line == 1:
             self.write(0x80)
