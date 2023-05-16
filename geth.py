@@ -50,12 +50,22 @@ while True:
             lcd.clear()
             break
 
-        # Handle all other errors
+        # Handle i2c device errors (install i2c-tools and kernel modules)
+        except FileNotFoundError:
+            print("error: 210 - can't find device: check i2c kernel modules")
+            sleep(10)
+
+        # Handle handle IO errors (check the serial ports and connections)
+        except OSError:
+            print("error: 220 - os exception: check i2c i/o and display wiring")
+            sleep(10)
+
+        # Handle all other errors and try to write on the display
         except:
             lcd.clear()
-            lcd.write_line("error: 200", 1)
+            lcd.write_line("error: 300", 1)
             lcd.write_line("python exception", 2)
-            print("error: 200 - python exception")
+            print("error: 300 - python exception")
             sleep(10)
 
         # Print client status if no error occured
@@ -72,5 +82,5 @@ while True:
         lcd.clear()
         lcd.write_line("error: 100", 1)
         lcd.write_line("geth disconnected", 2)
-        print("error: 100 - geth disconnected")
+        print("error: 100 - geth disconnected: check deamon")
         sleep(10)
