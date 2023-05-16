@@ -1,5 +1,6 @@
 # i2c-lcd-ethereum
-# Copyright (C) q9f 2023
+#
+# Copyright (C) 2023 Afri Schoedon @q9f
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

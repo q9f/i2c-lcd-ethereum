@@ -69,7 +69,7 @@ see [geth.py](./geth.py) or [lodestar.py](./lodestar.py) to have a fully functio
 
 ## credits
 
-license: `gplv3`
+license: `gplv3` due to upstream compatibilities. the demo scripts in the root directory are released into the public domain.
 
 drivers adapted from:
 * https://github.com/sweetpi/python-i2c-lcd
